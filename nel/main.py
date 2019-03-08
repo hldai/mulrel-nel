@@ -1,3 +1,5 @@
+import os
+from platform import platform
 import nel.dataset as D
 from nel.mulrel_ranker import MulRelRanker
 from nel.ed_ranker import EDRanker
@@ -10,11 +12,15 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
+if platform().startswith('Windows'):
+    root_path = 'd:/data/el/mulrel-nel-data'
+else:
+    root_path = '/home/hldai/data/el/mulrel-nel-data'
 
-datadir = 'data/generated/test_train_data/'
-conll_path = 'data/basic_data/test_datasets/'
-person_path = 'data/basic_data/p_e_m_data/persons.txt'
-voca_emb_dir = 'data/generated/embeddings/word_ent_embs/'
+datadir = os.path.join(root_path, 'generated/test_train_data/')
+conll_path = os.path.join(root_path, 'basic_data/test_datasets/')
+person_path = os.path.join(root_path, 'basic_data/p_e_m_data/persons.txt')
+voca_emb_dir = os.path.join(root_path, 'generated/embeddings/word_ent_embs/')
 
 ModelClass = MulRelRanker
 
