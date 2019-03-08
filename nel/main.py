@@ -24,7 +24,6 @@ voca_emb_dir = os.path.join(root_path, 'generated/embeddings/word_ent_embs/')
 
 ModelClass = MulRelRanker
 
-
 # general args
 parser.add_argument("--mode", type=str,
                     help="train or eval",
