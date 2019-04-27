@@ -54,10 +54,10 @@ class NTEE(AbstractWordEntity):
 def create_ntee_from_components(dir_path):
     word_dict_path = dir_path + '/dict.word'
     word_embs_path = dir_path + '/word_embeddings.npy'
-    # entity_dict_path = dir_path + '/dict.entity'
-    # entity_embs_path = dir_path + '/entity_embeddings.npy'
-    entity_dict_path = dir_path + '/entity-vocab-yama.txt'
-    entity_embs_path = dir_path + '/entity-embed-yama.npy'
+    entity_dict_path = dir_path + '/dict.entity'
+    entity_embs_path = dir_path + '/entity_embeddings.npy'
+    # entity_dict_path = dir_path + '/entity-vocab-yama.txt'
+    # entity_embs_path = dir_path + '/entity-embed-yama.npy'
     W_path = dir_path + '/W.npy'
     b_path = dir_path + '/b.npy'
 
