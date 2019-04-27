@@ -1,1 +1,4 @@
 .idea/
+*.pyc
+*.state_dict
+model.config
