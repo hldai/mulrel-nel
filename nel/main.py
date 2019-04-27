@@ -121,8 +121,10 @@ if __name__ == "__main__":
                                                               voca_emb_dir + '/glove/word_embeddings.npy')
     print('snd word voca size', snd_word_voca.size())
 
-    entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'dict.entity',
-                                                          voca_emb_dir + 'entity_embeddings.npy')
+    # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'dict.entity',
+    #                                                       voca_emb_dir + 'entity_embeddings.npy')
+    entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'entity-vocab-yama.txt',
+                                                          voca_emb_dir + 'entity-embed-yama.npy')
     config = {'hid_dims': args.hid_dims,
               'emb_dims': entity_embeddings.shape[1],
               'freeze_embs': True,
