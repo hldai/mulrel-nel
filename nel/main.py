@@ -147,7 +147,6 @@ if __name__ == "__main__":
     else:
         raise Exception('unknown model class')
 
-    config['use_local_only'] = True
     pprint(config)
     ranker = EDRanker(config=config)
 
