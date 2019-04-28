@@ -55,7 +55,7 @@ class EDRanker:
                 config['use_pad_ent'] = True
 
             config['use_local'] = True
-            config['use_local_only'] = True
+            config['use_local_only'] = False
             config['oracle'] = False
             self.model = ModelClass(config)
 
