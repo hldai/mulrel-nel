@@ -58,8 +58,10 @@ def create_ntee_from_components(dir_path):
     # entity_embs_path = dir_path + '/entity_embeddings.npy'
     # entity_dict_path = dir_path + '/entity-vocab-yama.txt'
     # entity_embs_path = dir_path + '/entity-embed-yama.npy'
-    entity_dict_path = dir_path + '/entity-vocab-aida.txt'
-    entity_embs_path = dir_path + '/entity-vecs-aida.npy'
+    # entity_dict_path = dir_path + '/entity-vocab-aida.txt'
+    # entity_embs_path = dir_path + '/entity-vecs-aida.npy'
+    entity_dict_path = dir_path + '/mrel-dhl-entity-vocab.txt'
+    entity_embs_path = dir_path + '/entity-vecs-dhl.npy'
     W_path = dir_path + '/W.npy'
     b_path = dir_path + '/b.npy'
 
