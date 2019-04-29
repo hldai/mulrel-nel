@@ -184,6 +184,8 @@ class EDRanker:
                         true_pos = -1
 
                 cands = [self.model.entity_voca.get_id(wiki_prefix + c) for c in named_cands]
+                print(cands)
+                exit()
                 mask = [1.] * len(cands)
                 if len(cands) == 0 and not predict:
                     continue
