@@ -120,6 +120,7 @@ if __name__ == "__main__":
     snd_word_voca, snd_word_embeddings = utils.load_voca_embs(voca_emb_dir + '/glove/dict.word',
                                                               voca_emb_dir + '/glove/word_embeddings.npy')
     print('snd word voca size', snd_word_voca.size())
+    dhl_voca_emb_dir = '/home/hldai/data/el/AIDA/deeped/'
 
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'dict.entity',
     #                                                       voca_emb_dir + 'entity_embeddings.npy')
@@ -127,8 +128,8 @@ if __name__ == "__main__":
     #                                                       voca_emb_dir + 'entity-embed-yama.npy')
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'entity-vocab-aida.txt',
     #                                                       voca_emb_dir + 'entity-vecs-aida.npy')
-    entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
-                                                          voca_emb_dir + 'entity-vecs-dhl.npy')
+    entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
+                                                          dhl_voca_emb_dir + 'entity-vecs-dhl.npy')
     config = {'hid_dims': args.hid_dims,
               'emb_dims': entity_embeddings.shape[1],
               'freeze_embs': True,
