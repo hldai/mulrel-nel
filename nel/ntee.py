@@ -51,38 +51,38 @@ class NTEE(AbstractWordEntity):
         return F.nll_loss(log_probs, true_pos)
 
 
-def create_ntee_from_components(dir_path):
-    word_dict_path = dir_path + '/dict.word'
-    word_embs_path = dir_path + '/word_embeddings.npy'
-    # entity_dict_path = dir_path + '/dict.entity'
-    # entity_embs_path = dir_path + '/entity_embeddings.npy'
-    # entity_dict_path = dir_path + '/entity-vocab-yama.txt'
-    # entity_embs_path = dir_path + '/entity-embed-yama.npy'
-    # entity_dict_path = dir_path + '/entity-vocab-aida.txt'
-    # entity_embs_path = dir_path + '/entity-vecs-aida.npy'
-    entity_dict_path = dir_path + '/mrel-dhl-entity-vocab.txt'
-    entity_embs_path = dir_path + '/entity-vecs-dhl.npy'
-    W_path = dir_path + '/W.npy'
-    b_path = dir_path + '/b.npy'
-
-    print('load voca and embeddings')
-    word_voca, word_embs = utils.load_voca_embs(word_dict_path, word_embs_path)
-    entity_voca, entity_embs = utils.load_voca_embs(entity_dict_path, entity_embs_path)
-    config = {'word_embeddings': word_embs,
-              'entity_embeddings': entity_embs,
-              'word_voca':  word_voca,
-              'entity_voca': entity_voca,
-              'emb_dims': word_embs.shape[1]}
-    print(word_embs.shape, entity_embs.shape)
-
-    # create model
-    print('create model')
-    model = NTEE(config)
-
-    W = np.load(W_path)
-    b = np.load(b_path)
-    model.linear.weight = nn.Parameter(torch.FloatTensor(W).t())
-    model.linear.bias = nn.Parameter(torch.FloatTensor(b))
-
-    return model
+# def create_ntee_from_components(dir_path):
+#     word_dict_path = dir_path + '/dict.word'
+#     word_embs_path = dir_path + '/word_embeddings.npy'
+#     # entity_dict_path = dir_path + '/dict.entity'
+#     # entity_embs_path = dir_path + '/entity_embeddings.npy'
+#     # entity_dict_path = dir_path + '/entity-vocab-yama.txt'
+#     # entity_embs_path = dir_path + '/entity-embed-yama.npy'
+#     # entity_dict_path = dir_path + '/entity-vocab-aida.txt'
+#     # entity_embs_path = dir_path + '/entity-vecs-aida.npy'
+#     entity_dict_path = dir_path + '/mrel-dhl-entity-vocab.txt'
+#     entity_embs_path = dir_path + '/entity-vecs-dhl.npy'
+#     W_path = dir_path + '/W.npy'
+#     b_path = dir_path + '/b.npy'
+#
+#     print('load voca and embeddings')
+#     word_voca, word_embs = utils.load_voca_embs(word_dict_path, word_embs_path)
+#     entity_voca, entity_embs = utils.load_voca_embs(entity_dict_path, entity_embs_path)
+#     config = {'word_embeddings': word_embs,
+#               'entity_embeddings': entity_embs,
+#               'word_voca':  word_voca,
+#               'entity_voca': entity_voca,
+#               'emb_dims': word_embs.shape[1]}
+#     print(word_embs.shape, entity_embs.shape)
+#
+#     # create model
+#     print('create model')
+#     model = NTEE(config)
+#
+#     W = np.load(W_path)
+#     b = np.load(b_path)
+#     model.linear.weight = nn.Parameter(torch.FloatTensor(W).t())
+#     model.linear.bias = nn.Parameter(torch.FloatTensor(b))
+#
+#     return model
 
