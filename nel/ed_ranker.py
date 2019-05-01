@@ -443,7 +443,7 @@ class EDRanker:
                 for i in range(len(gold)):
                     if gold[i] != pred[i]:
                         print('--------------------------------------------')
-                        pprint(batch[i]['raw'])
+                        # pprint(batch[i]['raw'])
                         print(gold[i], pred[i])
 
             for dname, entity in zip(doc_names, pred_entities):
