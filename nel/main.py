@@ -44,7 +44,7 @@ parser.add_argument("--keep_p_e_m", type=int,
                     default=4)
 parser.add_argument("--keep_ctx_ent", type=int,
                     help="number of top candidates to keep w.r.t using context",
-                    default=4)
+                    default=3)
 
 # args for local model
 parser.add_argument("--ctx_window", type=int,
@@ -52,7 +52,7 @@ parser.add_argument("--ctx_window", type=int,
                     default=100)
 parser.add_argument("--tok_top_n", type=int,
                     help="number of top contextual words for the local model",
-                    default=25)
+                    default=50)
 
 
 # args for global model
@@ -124,12 +124,12 @@ if __name__ == "__main__":
 
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'dict.entity',
     #                                                       voca_emb_dir + 'entity_embeddings.npy')
-    # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'entity-vocab-yama.txt',
-    #                                                       voca_emb_dir + 'entity-embed-yama.npy')
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'entity-vocab-aida.txt',
     #                                                       voca_emb_dir + 'entity-vecs-aida.npy')
+#    entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
+#                                                          dhl_voca_emb_dir + 'entity-vecs-dhl.npy')
     entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
-                                                          dhl_voca_emb_dir + 'entity-vecs-dhl.npy')
+                                                          dhl_voca_emb_dir + 'entity-vecs-provided.npy')
     config = {'hid_dims': args.hid_dims,
               'emb_dims': entity_embeddings.shape[1],
               'freeze_embs': True,
@@ -174,6 +174,7 @@ if __name__ == "__main__":
         org_dev_datasets = dev_datasets  # + [('aida-train', conll.train)]
         dev_datasets = []
         for dname, data in org_dev_datasets:
+            if dname != 'aida-B': continue
             dev_datasets.append((dname, ranker.get_data_items(data, predict=True)))
             print(dname, '#dev docs', len(dev_datasets[-1][1]))
 

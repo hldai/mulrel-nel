@@ -55,7 +55,8 @@ class EDRanker:
                 config['use_pad_ent'] = True
 
             config['use_local'] = True
-            config['use_local_only'] = False
+#            config['use_local_only'] = False
+            config['use_local_only'] = True
             config['oracle'] = False
             self.model = ModelClass(config)
 
@@ -141,8 +142,9 @@ class EDRanker:
 
                 if predict:
                     # only for oracle model, not used for eval
-                    if sm['true_pos'] == -1:
-                        sm['true_pos'] = 0  # a fake gold, happens only 2%, but avoid the non-gold
+                    pass
+#                    if sm['true_pos'] == -1:
+#                        sm['true_pos'] = 0  # a fake gold, happens only 2%, but avoid the non-gold
 
             if len(items) > 0:
                 new_dataset.append(items)
@@ -322,7 +324,7 @@ class EDRanker:
 
                 loss.backward()
                 optimizer.step()
-                self.model.regularize(max_norm=100)
+#                self.model.regularize(max_norm=100)
 
                 loss = loss.cpu().data.numpy()
                 total_loss += loss
@@ -432,8 +434,9 @@ class EDRanker:
 
             pred_ids = np.argmax(scores, axis=1)
             pred_entities = [m['selected_cands']['named_cands'][i] if m['selected_cands']['mask'][i] == 1
-                             else (m['selected_cands']['named_cands'][0] if m['selected_cands']['mask'][0] == 1 else 'NIL')
+                             else (m['selected_cands']['named_cands'][0] if m['selected_cands']['mask'][0] == 1 else 'NI')
                              for (i, m) in zip(pred_ids, batch)]
+#            print(pred_entities)
             doc_names = [m['doc_name'] for m in batch]
 
             if self.args.mode == 'eval' and self.args.print_incorrect:
@@ -443,8 +446,9 @@ class EDRanker:
                 for i in range(len(gold)):
                     if gold[i] != pred[i]:
                         print('--------------------------------------------')
-                        # pprint(batch[i]['raw'])
+#                        pprint(batch[i]['raw'])
                         print(gold[i], pred[i])
+                        print(pred_ids[i], scores[i])
 
             for dname, entity in zip(doc_names, pred_entities):
                 predictions[dname].append({'pred': (entity, 0.)})
