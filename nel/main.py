@@ -126,8 +126,8 @@ if __name__ == "__main__":
     #                                                       voca_emb_dir + 'entity_embeddings.npy')
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'entity-vocab-aida.txt',
     #                                                       voca_emb_dir + 'entity-vecs-aida.npy')
-#    entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
-#                                                          dhl_voca_emb_dir + 'entity-vecs-dhl.npy')
+    # entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
+    #                                                       dhl_voca_emb_dir + 'entity-vecs-dhl.npy')
     entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
                                                           dhl_voca_emb_dir + 'entity-vecs-provided.npy')
     config = {'hid_dims': args.hid_dims,
