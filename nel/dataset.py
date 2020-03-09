@@ -27,10 +27,16 @@ def read_csv_file(path):
 
             if doc_name not in data:
                 data[doc_name] = []
+            # if path.endswith("tac14_test_cands.txt"):
+            # # if path.endswith("aida_testB.csv"):
+            #     print(mention, '*', gold, '*', comps[-1])
             data[doc_name].append({'mention': mention,
                                    'context': (lctx, rctx),
                                    'candidates': cands,
                                    'gold': gold})
+
+    # if path.endswith("tac14_test_cands.txt"):
+    #     exit()
     return data
 
 
@@ -219,6 +225,7 @@ class CoNLLDataset:
         self.msnbc = read_csv_file(path + '/wned-msnbc.csv')
         self.wikipedia = read_csv_file(path + '/wned-wikipedia.csv')
         self.wikipedia.pop('Jiří_Třanovský Jiří_Třanovský', None)
+        self.tac14 = read_csv_file('/home/data/hldai/el/tacdata/tac14_test_cands.txt')
 
         print('process coref')
         person_names = load_person_names(person_path)
@@ -230,6 +237,7 @@ class CoNLLDataset:
         with_coref(self.clueweb, person_names)
         with_coref(self.msnbc, person_names)
         with_coref(self.wikipedia, person_names)
+        with_coref(self.tac14, person_names)
 
         print('load conll')
         read_conll_file(self.train, conll_path + '/AIDA/aida_train.txt')
@@ -240,6 +248,7 @@ class CoNLLDataset:
         read_conll_file(self.msnbc, conll_path + '/wned-datasets/msnbc/msnbc.conll')
         read_conll_file(self.clueweb, conll_path + '/wned-datasets/clueweb/clueweb.conll')
         read_conll_file(self.wikipedia, conll_path + '/wned-datasets/wikipedia/wikipedia.conll')
+        read_conll_file(self.tac14, '/home/data/hldai/el/tacdata/tac14_test_conll.txt')
 
 
 if __name__ == "__main__":

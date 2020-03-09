@@ -121,15 +121,16 @@ if __name__ == "__main__":
                                                               voca_emb_dir + '/glove/word_embeddings.npy')
     print('snd word voca size', snd_word_voca.size())
     dhl_voca_emb_dir = '/home/data/hldai/el/AIDA/deeped/'
+    deeped_emb_dir = '/home/data/hldai/el/deepedemb/'
 
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'dict.entity',
     #                                                       voca_emb_dir + 'entity_embeddings.npy')
     # entity_voca, entity_embeddings = utils.load_voca_embs(voca_emb_dir + 'entity-vocab-aida.txt',
     #                                                       voca_emb_dir + 'entity-vecs-aida.npy')
-    # entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
-    #                                                       dhl_voca_emb_dir + 'entity-vecs-dhl.npy')
-    entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab-400.txt',
-                                                          dhl_voca_emb_dir + 'entity-vecs-dhl-400.npy')
+    entity_voca, entity_embeddings = utils.load_voca_embs(deeped_emb_dir + 'mrel-aidatac-entity-vocab.txt',
+                                                          deeped_emb_dir + 'entity-vecs-aidatac.npy')
+    # entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab-400.txt',
+    #                                                       dhl_voca_emb_dir + 'entity-vecs-dhl-400.npy')
     # entity_voca, entity_embeddings = utils.load_voca_embs(dhl_voca_emb_dir + 'mrel-dhl-entity-vocab.txt',
     #                                                       dhl_voca_emb_dir + 'entity-vecs-provided.npy')
     config = {'hid_dims': args.hid_dims,
@@ -163,7 +164,8 @@ if __name__ == "__main__":
                     ('aquaint', conll.aquaint),
                     ('ace2004', conll.ace2004),
                     ('clueweb', conll.clueweb),
-                    ('wikipedia', conll.wikipedia)
+                    ('wikipedia', conll.wikipedia),
+                    ('tac14', conll.tac14)
                     ]
 
     if args.mode == 'train':
